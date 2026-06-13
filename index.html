@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niranjan | Full Stack Developer</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0f172a;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.8);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            padding: 40px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+        }
+
+        .hero span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            margin-top: 20px;
+            max-width: 700px;
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 10px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .primary {
+            background: #38bdf8;
+            color: black;
+            font-weight: 600;
+        }
+
+        .secondary {
+            border: 2px solid #38bdf8;
+            color: #38bdf8;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+        }
+
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        .about {
+            text-align: center;
+            max-width: 900px;
+            margin: auto;
+            color: #cbd5e1;
+            line-height: 2;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            background: #334155;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: 0.35s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: #38bdf8;
+            box-shadow: 0 0 30px rgba(56, 189, 248, .15);
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-content h3 {
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .project-content p {
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+
+        .tags {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #1e293b;
+            color: #38bdf8;
+            padding: 8px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            border: 1px solid #334155;
+        }
+
+        .skills-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 20px;
+            padding: 25px;
+            transition: 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-8px);
+            border-color: #38bdf8;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
+        }
+
+        .skill-category h3 {
+            color: #38bdf8;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tags span {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 8px 14px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .skill-tags span:hover {
+            background: #38bdf8;
+            color: #020617;
+            cursor: pointer;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 12px;
+            margin: 4px;
+            background: #38bdf8;
+            color: black;
+            border-radius: 20px;
+            font-size: .8rem;
+            font-weight: 600;
+        }
+
+        .contact {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-text {
+            color: #94a3b8;
+            line-height: 1.9;
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .contact-links a {
+            text-decoration: none;
+            color: white;
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            padding: 14px 24px;
+            border-radius: 50px;
+            transition: .3s;
+        }
+
+        .contact-links a:hover {
+            background: #38bdf8;
+            color: #020617;
+            transform: translateY(-5px);
+        }
+
+        .contact-message h3 {
+            color: #38bdf8;
+            margin-bottom: 15px;
+        }
+
+        .contact-message p {
+            color: #94a3b8;
+        }
+
+        .more-projects {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .more-projects p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .more-projects a {
+            display: inline-block;
+            text-decoration: none;
+            color: #38bdf8;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: .3s;
+        }
+
+        .more-projects a:hover {
+            transform: translateY(-3px);
+            color: white;
+        }
+
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #020617;
+            color: #94a3b8;
+        }
+
+        .fade {
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media(max-width:768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Niranjan C B</div>
+
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero fade">
+
+        <h4 class="hero-tag">
+            SOFTWARE ENGINEER • FULL STACK DEVELOPER
+        </h4>
+
+        <h1>
+            Building <span>Secure</span> & <br>
+            Scalable Software Systems.
+        </h1>
+
+        <p>
+            Computer Science graduate with expertise in Full-Stack Development,
+            Backend Engineering, and Real-Time Applications.
+
+            I build production-ready web applications, secure APIs,
+            cloud-based platforms, and low-latency real-time systems using
+            MERN Stack, Spring Boot, Java, and modern web technologies.
+        </p>
+
+        <div class="buttons">
+
+            <a class="btn primary" href="https://github.com/niru128" target="_blank">
+                Explore My Work
+            </a>
+
+            <a class="btn secondary" href="#projects">
+                Featured Projects
+            </a>
+
+        </div>
+
+        <div class="hero-stats">
+
+            <div>
+                <h3>270+</h3>
+                <span>LeetCode Problems</span>
+            </div>
+
+            <div>
+                <h3>3+</h3>
+                <span>Production Projects</span>
+            </div>
+
+            <div>
+                <h3>IEEE</h3>
+                <span>Published Research</span>
+            </div>
+
+            <div>
+                <h3>8.83</h3>
+                <span>CGPA</span>
+            </div>
+
+        </div>
+
+    </section>
+    <section id="about">
+
+        <h2 class="section-title">
+            About Me
+        </h2>
+
+        <div class="about">
+
+            <p>
+                I'm <strong>Niranjan C B</strong>, a Computer Science graduate passionate
+                about building secure, scalable, and production-ready software systems.
+            </p>
+
+            <br>
+
+            <p>
+                My experience spans full-stack development, backend engineering,
+                real-time applications, and cloud-based platforms. I enjoy designing
+                robust APIs, optimizing application performance, and solving complex
+                engineering challenges.
+            </p>
+
+            <br>
+
+            <p>
+                Over the years, I've developed projects ranging from secure cloud
+                storage platforms and real-time communication systems to live polling
+                applications, using technologies such as MERN Stack, Spring Boot,
+                Java, and modern web frameworks.
+            </p>
+
+            <br>
+
+            <p>
+                Beyond development, I actively strengthen my problem-solving skills
+                through Data Structures & Algorithms, having solved 270+ LeetCode
+                problems and contributed to research published in IEEE.
+            </p>
+
+        </div>
+
+    </section>
+
+    <section id="skills">
+
+        <h2 class="section-title">
+            Technical Skills
+        </h2>
+
+        <div class="skills-container">
+
+            <div class="skill-category">
+                <h3>Languages</h3>
+
+                <div class="skill-tags">
+                    <span>Java</span>
+                    <span>JavaScript</span>
+                    <span>Python</span>
+                    <span>SQL</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Frontend</h3>
+
+                <div class="skill-tags">
+                    <span>React.js</span>
+                    <span>Next.js</span>
+                    <span>Redux</span>
+                    <span>Zustand</span>
+                    <span>TailwindCSS</span>
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>Vite</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Backend</h3>
+
+                <div class="skill-tags">
+                    <span>Node.js</span>
+                    <span>Express.js</span>
+                    <span>Spring Boot</span>
+                    <span>REST APIs</span>
+                    <span>JWT</span>
+                    <span>Socket.IO</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Databases</h3>
+
+                <div class="skill-tags">
+                    <span>MongoDB</span>
+                    <span>MySQL</span>
+                    <span>PostgreSQL</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Tools & Platforms</h3>
+
+                <div class="skill-tags">
+                    <span>Git</span>
+                    <span>GitHub</span>
+                    <span>Postman</span>
+                    <span>VS Code</span>
+                    <span>Render</span>
+                    <span>Vercel</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Core CS</h3>
+
+                <div class="skill-tags">
+                    <span>DSA</span>
+                    <span>Operating Systems</span>
+                    <span>DBMS</span>
+                    <span>Computer Networks</span>
+                    <span>OOP</span>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="projects">
+
+        <h2 class="section-title">
+            Featured Projects
+        </h2>
+
+        <div class="projects">
+
+            <!-- Vaultify -->
+
+            <div class="project-card">
+
+                <div class="project-content">
+
+                    <h3>🔐 Vaultify</h3>
+
+                    <p>
+                        Secure cloud-based file storage platform built with
+                        React, Spring Boot and Supabase. Features JWT authentication,
+                        role-based authorization, encrypted file protection,
+                        cloud storage management and intelligent search.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">Supabase</span>
+                        <span class="tag">JWT</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ChatX -->
+
+            <div class="project-card">
+
+                <div class="project-content">
+
+                    <h3>💬 ChatX</h3>
+
+                    <p>
+                        Real-time communication platform supporting channel-based
+                        messaging, file sharing and secure authentication.
+                        Built using MERN and Socket.IO for low-latency communication.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Socket.IO</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Live Polling -->
+
+            <div class="project-card">
+
+                <div class="project-content">
+
+                    <h3>📊 Live Polling System</h3>
+
+                    <p>
+                        Real-time polling platform with teacher-student architecture,
+                        instant vote synchronization, session control,
+                        live result broadcasting and WebSocket-based communication.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">MERN</span>
+                        <span class="tag">Socket.IO</span>
+                        <span class="tag">WebSockets</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Research -->
+
+            <div class="project-card">
+
+                <div class="project-content">
+
+                    <h3>📄 IEEE Research Publication</h3>
+
+                    <p>
+                        Co-authored research on AI-Based Online Harassment Detection
+                        using Machine Learning and Natural Language Processing,
+                        published in IEEE Xplore (i-PACT 2025).
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">IEEE</span>
+                        <span class="tag">Research</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="more-projects">
+
+            <p>
+                Interested in exploring more of my work?
+            </p>
+
+            <a href="https://github.com/niru128?tab=repositories" target="_blank">
+                View All Repositories →
+            </a>
+
+        </div>
+
+    </section>
+
+    <section id="contact">
+
+        <h2 class="section-title">
+            Let's Connect
+        </h2>
+
+        <div class="contact">
+
+            <p class="contact-text">
+                I'm currently seeking Software Engineer, Full Stack Developer,
+                and Backend Engineering opportunities.
+
+                Whether you have an exciting project, internship opportunity,
+                or simply want to discuss technology, feel free to reach out.
+            </p>
+
+            <div class="contact-links">
+
+                <a href="mailto:nirubasavaraj2002@gmail.com" target="_blank">
+                    📧 Email
+                </a>
+
+                <a href="https://github.com/niru128" target="_blank">
+                    💻 GitHub
+                </a>
+
+                <a href="https://www.linkedin.com/in/niranjan2609/" target="_blank">
+                    🔗 LinkedIn
+                </a>
+
+                <a href="https://leetcode.com/u/_Niru_2002/" target="_blank">
+                    🧠 LeetCode
+                </a>
+
+            </div>
+
+            <div class="contact-message">
+                <h3>
+                    Building secure, scalable and impactful software.
+                </h3>
+
+                <p>
+                    Let's create something amazing together 🚀
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        <div class="footer-content">
+
+            <h3>Niranjan C B</h3>
+
+            <p>
+                Software Engineer • Full Stack Developer • Problem Solver
+            </p>
+
+            <p class="footer-line">
+                Building secure, scalable and impactful software systems.
+            </p>
+
+            <p class="copyright">
+                © 2026 Niranjan C B. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
